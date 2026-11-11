@@ -1,1 +1,36 @@
-<!doctype html><html lang="vi"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Thiệp Xinh Studio</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff7f9">
+<title>Thiệp Xinh Studio — Thiết kế thiệp Luxury</title>
+<style>
+html,body{margin:0;min-height:100%;background:#fff7f9;color:#362635;font-family:system-ui,-apple-system,sans-serif}
+#startup{max-width:540px;margin:12vh auto;padding:35px 22px;text-align:center}
+#startup h1{font:italic 38px Georgia,serif;color:#a34c70}
+#startup p{line-height:1.75;color:#756777}
+#startup a{color:#a34c70}
+#startup .letter{font-size:66px;margin-bottom:15px}
+#startupError{display:none;max-width:650px;margin:25px auto;padding:18px;background:#fff1ed;border:1px solid #e5a9a1;border-radius:14px;color:#8b3434;white-space:pre-wrap;word-break:break-word;font-size:13px}
+</style>
+<script>
+(function(){
+var failed=false;
+function show(message){
+if(failed)return;failed=true;
+var box=document.getElementById('startupError');
+if(box){box.style.display='block';box.textContent='Ứng dụng gặp lỗi khi khởi động.\n'+String(message).slice(0,350)}
+}
+window.addEventListener('error',function(e){show(e.message||'Không tải được JavaScript')});
+window.addEventListener('unhandledrejection',function(e){show(e.reason&&e.reason.message||'Không tải được dữ liệu')});
+setTimeout(function(){var el=document.getElementById('startup');if(el){el.querySelector('.status').textContent='Giao diện chưa khởi động. Hãy thử tải lại trang hoặc mở bằng Chrome/Safari.'}},9000);
+window.__studioShowError=show;
+})();
+</script>
+</head>
+<body>
+<div id="root"><main id="startup"><div class="letter">✉</div><h1>Thiệp Xinh Studio</h1><p class="status">Đang tải trình thiết kế thiệp Luxury…</p><p>Nếu trang không chuyển sang giao diện thiết kế, hãy nhấn tải lại hoặc mở trên trình duyệt Chrome/Safari.</p><a href="https://github.com/nguyenvanthien13/du_an_thiep/actions">Xem trạng thái website</a></main></div>
+<div id="startupError" role="alert"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body></html>
